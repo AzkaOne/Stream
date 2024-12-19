@@ -7,3 +7,6 @@
  ![soal 4](image-4.png)
  5.perbedaan mengunakan listen dan awai for adalah listen bisa digunakan dimana saja sedangkan await for hanya bisa digunakan didalam fungsi async
  6.![soal 6](image-5.png)
+ 7.![soal 7](image-6.png)
+ addError digunakan untuk memasukan error kedalam stream yang digunakan ketika terjadi error ketika proses add number
+ dan numberStrean.addError digunakan untuk memanggil fungsi adderror yang ada di fungi  initstate
