@@ -30,7 +30,7 @@ class StreamHomePage extends StatefulWidget {
 
 class _StreamPageState extends State<StreamHomePage> {
   Color bgColor = Colors.purple;
-  late ColorStream colorStream;
+  late ColorStream  colorStream;
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +48,17 @@ class _StreamPageState extends State<StreamHomePage> {
   }
 
   void changeColor() async {
-    await for (var eventColor in colorStream.getColors()) {
+    // await for (var eventColor in colorStream.getColors()) {
+    //   setState(() {
+    //     bgColor = eventColor;
+    //   });
+    // }
+
+    colorStream.getColors().listen((eventColor) {
       setState(() {
         bgColor = eventColor;
       });
-    }
+    });
   }
 
   @override
