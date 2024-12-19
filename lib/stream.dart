@@ -8,4 +8,14 @@ class ColorStream {
     Colors.greenAccent.shade400,
     Colors.tealAccent.shade400
   ];
+
+  Stream<Color> getColors() async*{
+      yield* Stream.periodic(
+      const Duration(seconds: 1), (int t) {
+      int index = t % colors.length;
+      return colors[index];
+      });
+  }
+
+  
 }
