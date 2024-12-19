@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'stream.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AzkaOne Stream',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -27,8 +29,36 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamPageState extends State<StreamHomePage> {
+  Color bgColor = Colors.purple;
+  late ColorStream colorStream;
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('AzkaOne Stream'),
+          centerTitle: true,
+        ),
+        body: Container(
+          decoration: BoxDecoration(color: bgColor),
+        ),
+      ),
+    );
+  }
+
+  void changeColor() async {
+    await for (var eventColor in colorStream.getColors()) {
+      setState(() {
+        bgColor = eventColor;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    colorStream = ColorStream();
+    changeColor();
   }
 }

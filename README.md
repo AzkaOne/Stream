@@ -3,3 +3,6 @@
  3.![soal 3](image-2.png)
  yield digunakan untuk meneruskan aliran yang dihasilkan oleh stream.periodic
  - fungsi dari kode diatas untuk mereuskan data dari GetColor dengan waktu 1 detik
+ 4.![soal4](image-3.png)
+ ![soal 4](image-4.png)
+ 
