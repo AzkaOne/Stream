@@ -19,4 +19,6 @@
  pada langkah 2 digunakan untuk menampilkan event stream dan menagnggani srror atau kondisi selesai
  lalu pada dispose digunakan untuk melakukan stop
  dan menambhakan random number pada percobaan ke 8
- 
+ 10.karena stream hanya bisa memanggil listener 1x saja
+ 11.![soal 11](image-10.png)
+ mengunakan broadcaststream untuk memebuat stream dapat mengunakan banyak listener
