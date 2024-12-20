@@ -31,6 +31,7 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamPageState extends State<StreamHomePage> {
+  late StreamSubscription subscription;
   late StreamTransformer transformer;
   Color bgColor = Colors.purple;
   late ColorStream colorStream;
@@ -56,7 +57,11 @@ class _StreamPageState extends State<StreamHomePage> {
                 Text(lastNumber.toString()),
                 ElevatedButton(
                   onPressed: () => addRandomNumber(),
-                  child: Text('New Random Number'),
+                  child: Text('add New Number'),
+                ),
+                ElevatedButton(
+                  onPressed: () => stopStream(),
+                  child: Text('Stop Subcription'),
                 )
               ],
             ),
@@ -88,6 +93,21 @@ class _StreamPageState extends State<StreamHomePage> {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
     Stream stream = numberStreamController.stream;
+    subscription = stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
+    super.initState();
+    subscription.onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
+    subscription.onDone(() {
+      print('onDone was called');
+    });
+
     // stream.listen((event) {
     //   setState(() {
     //     lastNumber = event;
@@ -107,28 +127,39 @@ class _StreamPageState extends State<StreamHomePage> {
         },
         handleDone: (sink) => sink.close());
 
-    stream.transform(transformer).listen((event) {
-      setState(() {
-        lastNumber = event;
-      });
-    }).onError((error) {
-      setState(() {
-        lastNumber = -1;
-      });
-    });
-    super.initState();
+    // stream.transform(transformer).listen((event) {
+    //   setState(() {
+    //     lastNumber = event;
+    //   });
+    // }).onError((error) {
+    //   setState(() {
+    //     lastNumber = -1;
+    //   });
+    // });
+    // super.initState();
   }
 
   @override
   void dispose() {
-    numberStreamController.close();
-    super.dispose();
+    // numberStreamController.close();
+    // super.dispose();
+    subscription.cancel();
   }
 
   void addRandomNumber() {
     Random random = Random();
     int myNum = random.nextInt(10);
-    numberStream.addNumberToSink(myNum);
+    if (!numberStreamController.isClosed) {
+      numberStream.addNumberToSink(myNum);
+    } else {
+      setState(() {
+        lastNumber = -1;
+      });
+    }
     // numberStream.addError();
+  }
+
+  void stopStream() {
+    numberStreamController.close();
   }
 }

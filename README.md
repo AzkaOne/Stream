@@ -14,3 +14,9 @@
  dimulai dengan membuat  variabel bernama transformer
  yang dkedua melakukan setting agar ketika mnenekan tombol random number akan dikali 10 
  lalyu yang ketiga diogunakan untuk memproses data agar sesuai dengan yang ada di initstate
+ 9.![soal 9](image-8.png)
+ ![soal 9](image-9.png)
+ pada langkah 2 digunakan untuk menampilkan event stream dan menagnggani srror atau kondisi selesai
+ lalu pada dispose digunakan untuk melakukan stop
+ dan menambhakan random number pada percobaan ke 8
+ 
