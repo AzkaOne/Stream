@@ -10,3 +10,7 @@
  7.![soal 7](image-6.png)
  addError digunakan untuk memasukan error kedalam stream yang digunakan ketika terjadi error ketika proses add number
  dan numberStrean.addError digunakan untuk memanggil fungsi adderror yang ada di fungi  initstate
+ 8.![soal 8](image-7.png)
+ dimulai dengan membuat  variabel bernama transformer
+ yang dkedua melakukan setting agar ketika mnenekan tombol random number akan dikali 10 
+ lalyu yang ketiga diogunakan untuk memproses data agar sesuai dengan yang ada di initstate
